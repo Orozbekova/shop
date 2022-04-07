@@ -44,10 +44,11 @@ INSTALLED_APPS = [
     #my apps
     'applications.product',
     'applications.account',
-    'rest_framework.authtoken',
 
     #modules
     'rest_framework',
+    'rest_framework.authtoken',
+    'drf_yasg',
 
 
 ]
@@ -145,14 +146,19 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':[
         'rest_framework.authentication.TokenAuthentication'
-    ]
+    ],
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 2,
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated' # AllowAny
+    ],
 }
 
 
